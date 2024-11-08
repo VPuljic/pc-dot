@@ -1,0 +1,93 @@
+{
+  "position": "top",
+  "modules-left": [
+    "hyprland/workspaces",
+    "custom/updates",
+    "custom/btop",
+    "hyprland/window"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "network",
+    "pulseaudio",
+    "bluetooth",
+    "tray"
+  ],
+  "hyprland/workspaces": {
+    "on-scroll-up": "hyprctl dispatch workspace r-1",
+    "on-scroll-down": "hyprctl dispatch workspace r+1",
+    "on-click": "activate",
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{}",
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "default": ""
+    },
+    "persistent-workspaces": {
+      "*": 5
+    }
+  },
+  "custom/updates": {
+    "format": "<span foreground='#f5e0dc'> |   </span> {}",
+    "escape": true,
+    "return-type": "json",
+    "exec": "~/.config/waybar/updates.sh",
+    "interval": 1800
+  },
+  "clock": {
+    "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "bluetooth": {
+    "format": "<span foreground='#89dceb'> </span>{status}",
+    "format-disabled": "",
+    "format-off": "",
+    "interval": 30,
+    "on-click": "hyprctl dispatch togglespecialworkspace; blueman-manager",
+    "format-no-controller": ""
+  },
+  "network": {
+    "format-wifi": "<span size='13000' foreground='#f5e0dc'>  </span>{essid}",
+    "format-ethernet": "<span size='13000' foreground='#f5e0dc'> {ifname} </span>",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected",
+    "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
+  },
+  "pulseaudio": {
+    "scroll-step": 1,
+    "format": "{icon}  {volume}%",
+    "format-bluetooth": "{icon}  {volume}%",
+    "format-bluetooth-muted": "󰸈",
+    "format-muted": "󰸈",
+    "format-source": "",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "on-click": "pavucontrol"
+  },
+  "custom/btop": {
+    "format": "<span foreground='#f5e0dc'> |   </span>",
+    "escape": true,
+    "return-type": "json",
+    "on-click": "hyprctl dispatch togglespecialworkspace; ~/.config/waybar/btopLauncher.sh"
+  },
+  "tray": {
+    "icon-size": 20,
+    "spacing": 10
+  }
+}
